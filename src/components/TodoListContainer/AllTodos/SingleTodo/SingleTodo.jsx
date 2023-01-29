@@ -21,7 +21,16 @@ const SingleTodo = ({ todo }) => {
 
   //   Handle Done Tasks
   const handleTaskDone = (e, id) => {
-    const matchedTodo = todoList.filter((todo) => todo.id === id);
+    let matchedTodo;
+
+    if (completedTodo) {
+      matchedTodo = completedTodo.filter((todo) => todo.id === id);
+    } else if (filteredTodoList) {
+      matchedTodo = filteredTodoList.filter((todo) => todo.id === id);
+    } else {
+      matchedTodo = todoList.filter((todo) => todo.id === id);
+    }
+
     const remainingTodos = todoList.filter((todo) => todo.id !== id);
     if (e.target.checked) {
       matchedTodo[0].completed = true;
