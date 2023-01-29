@@ -35,17 +35,22 @@ const SingleTodo = ({ todo }) => {
 
   //   Delete a Todo
   const handleTodoDelete = (id) => {
-    removeFromDb(id);
-    if (completedTodo) {
-      const remainingTodoList = completedTodo.filter((todo) => todo.id !== id);
-      setCompletedTodo(remainingTodoList);
-    } else if (filteredTodoList) {
-      const remainingTodoList = filteredTodoList.filter(
-        (todo) => todo.id !== id
-      );
-      setFilteredTodoList(remainingTodoList);
-    } else {
-      setTodoList(getStoredTodo().sort((a, b) => a.id - b.id));
+    const consent = confirm("Do you want to remove the todo?");
+    if (consent) {
+      removeFromDb(id);
+      if (completedTodo) {
+        const remainingTodoList = completedTodo.filter(
+          (todo) => todo.id !== id
+        );
+        setCompletedTodo(remainingTodoList);
+      } else if (filteredTodoList) {
+        const remainingTodoList = filteredTodoList.filter(
+          (todo) => todo.id !== id
+        );
+        setFilteredTodoList(remainingTodoList);
+      } else {
+        setTodoList(getStoredTodo().sort((a, b) => a.id - b.id));
+      }
     }
   };
 
@@ -103,7 +108,6 @@ const SingleTodo = ({ todo }) => {
               onChange={(e) => handleTaskDone(e, id)}
               className="mr-1"
               type="checkbox"
-              name=""
               id={todoTitle}
               defaultChecked={completed}
             />

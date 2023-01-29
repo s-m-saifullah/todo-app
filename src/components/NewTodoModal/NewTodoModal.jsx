@@ -77,6 +77,7 @@ const NewTodoModal = () => {
               name="todoTitle"
               className="bg-input w-full rounded-lg px-5 py-3 text-primary placeholder:text-[#7C7970]"
               placeholder="add a title"
+              required
             />
           </div>
 
@@ -94,6 +95,7 @@ const NewTodoModal = () => {
               id="todo-description"
               className="bg-input w-full rounded-lg px-5 py-3 h-28 text-primary placeholder:text-[#7C7970]"
               placeholder="add a description"
+              required
             />
           </div>
 
@@ -105,7 +107,7 @@ const NewTodoModal = () => {
             >
               Tags
             </p>
-            <div className="flex flex-wrap md:flex-nowrap">
+            <div className="flex flex-wrap md:flex-nowrap md:gap-3">
               {tags.map((tag) => (
                 <div key={tag.id} className="w-1/2">
                   <input
