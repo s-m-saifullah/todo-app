@@ -22,13 +22,16 @@ const Sidebar = () => {
   const handleHideDoneTodo = (e) => {
     let incompleteTodos;
     if (filteredTodoList) {
+      // Isolating filtered todos with incomplete tag
       incompleteTodos = filteredTodoList.filter(
         (todo) => todo.completed === false
       );
     } else {
+      // Isolating todos with incomplete tag
       incompleteTodos = todoList.filter((todo) => todo.completed === false);
     }
 
+    // Updating states based on user input
     if (e.target.checked) {
       setCompletedTodo(incompleteTodos);
     } else {

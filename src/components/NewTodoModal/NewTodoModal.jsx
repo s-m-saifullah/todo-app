@@ -9,9 +9,13 @@ const NewTodoModal = () => {
   // Add/Remove checked item from list
   const handleChecked = (e) => {
     let updatedList = [...checked];
+
+    // Setting checked tags based on user input
     if (e.target.checked) {
+      // Add a tag to checked tag list
       updatedList = [...checked, e.target.value];
     } else {
+      // Remove a tag from checked tag list
       updatedList.splice(checked.indexOf(e.target.value), 1);
     }
     setChecked(updatedList);
@@ -25,10 +29,12 @@ const NewTodoModal = () => {
   //   Add New Todo
   const handleAddTodo = (e) => {
     e.preventDefault();
+
     const form = e.target;
     const todoTitle = form.todoTitle.value;
     const todoDescription = form.todoDescription.value;
 
+    // New Todo Object
     const todos = {
       todoTitle,
       todoDescription,
@@ -36,9 +42,12 @@ const NewTodoModal = () => {
       completed: false,
     };
 
-    addToDb(todos);
+    addToDb(todos); // Add todo to local storage
     setCreateNewTodo(false);
+    // Getting todos from local storage
     const prevTodos = getStoredTodo("todos");
+
+    // Updating todo list for UI rerendering
     setTodoList([...prevTodos]);
   };
 

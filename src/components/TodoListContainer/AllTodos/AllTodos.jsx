@@ -4,7 +4,6 @@ import SingleTodo from "./SingleTodo/SingleTodo";
 
 const AllTodos = () => {
   const { todoList, filteredTodoList, completedTodo } = useContext(TodoContext);
-  //   console.log(todoList);
   return (
     <div className="col-span-4">
       <h2 className="text-primary text-xl mb-5">All Todo</h2>

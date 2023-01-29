@@ -9,6 +9,7 @@ const Topbar = () => {
     <div className="flex justify-between py-5 text-primary text-4xl">
       <p className="font-bold">todo</p>
       <div
+        // Open Modal
         onClick={() => {
           setCreateNewTodo((prevState) => !prevState);
         }}
